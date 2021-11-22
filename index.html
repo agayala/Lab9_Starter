@@ -69,20 +69,35 @@
     </form>
 
     <section id="error-btns">
-      <button>Console Log</button>
-      <button>Console Error</button>
-      <button>Console Count</button>
-      <button>Console Warn</button>
-      <button>Console Assert</button>
-      <button>Console Clear</button>
-      <button>Console Dir</button>
-      <button>Console dirxml</button>
-      <button>Console Group Start</button>
-      <button>Console Group End</button>
-      <button>Console Table</button>
-      <button>Start Timer</button>
-      <button>End Timer</button>
-      <button>Console Trace</button>
+      <button onclick="console.log('Console Log Demo')">Console Log</button>
+      <button onclick="console.error('Console Error Demo')">Console Error</button>
+      <button onclick="console.count('Count Button')">Console Count</button>
+      <button onclick="console.warn('Console Warn Button')">Console Warn</button>
+      <button onclick="console.assert(2 == 3, 'The number does not equal 3')">Console Assert</button>
+      <button onclick="console.clear()">Console Clear</button>
+      <button onclick="console.dir(this)">Console Dir</button>
+      <button onclick="console.dirxml(this)">Console dirxml</button>
+      <button onclick="console.group()">Console Group Start</button>
+      <button onclick="console.groupEnd()">Console Group End</button>
+      <button onclick="console.table([
+        {
+          name: 'Software Engineering',
+          num: 110,
+        },
+        {
+          name: 'Programming Language',
+          num: 130,
+        },
+        {
+          name: 'Advanced Software',
+          num: 112,
+        }
+      ])">Console Table</button>
+      <button onclick="console.time('Timer Button')">Start Timer</button>
+      <button onclick="console.timeEnd('Timer Button')">End Timer</button>
+      <button onclick="const deep = () => {deeper(); }; 
+                       const deeper = () => {deepest(); };
+                       const deepest = () => { console.trace(); }; deep()">Console Trace</button>
       <button>Trigger a Global Error</button>
     </section>
   </main>
@@ -102,6 +117,31 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    try{
+      const sentence = document.createElement('p');
+      const node = document.createTextNode("Hello, how are you?");
+      sentence.appendChild(node);
+
+      const elem = document.getElementById('head');
+      elem.appendChild(sentence);
+    } catch(err) {
+      alert('Error has occurred')
+    } finally{
+      console.log('It Works!');
+    }
+
+    let obj = '{ "age":65 }';
+
+    try{
+      let him = JSON.parse(obj);
+
+      if(!user.name) {
+        throw new SyntaxError("No name!!!");
+      }
+    } catch (err){
+      alert('JSON Error');
+    }
+
   </script>
 </body>
 
